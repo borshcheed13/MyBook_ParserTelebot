@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # MyBook_ParserTelebot
 
-***MyBook_ParserTelebot*** - это бот Telegram, 
+**MyBook_ParserTelebot** - это бот **Telegram**, 
 который может анализировать сайт [MyBook.ru](https://mybook.ru/)
 и рассылать сообщения пользователям с новыми книгами, появившимися в доступе.
 
@@ -18,7 +17,7 @@
 
 ## Установка
 
-1. Код игры писался на **Python 3.12**
+1. Код игры писался на ***Python 3.12***
 2. Для асинхронности кода используется пакет ***asyncio	3.4.3***
 
 ```pip install asyncio==3.4.3```
