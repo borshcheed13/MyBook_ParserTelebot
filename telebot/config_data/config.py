@@ -3,20 +3,29 @@ from dataclasses import dataclass
 import json
 
 ####################################################################################################
-#классы и функция считывают токен из .env и создают телеграмбота
+#классы и функция считывают конфигурацию из .env
 ####################################################################################################
-@dataclass
-class Tgbot:
-    token: str
 
 @dataclass
 class Config:
-    tg_bot: str
+    token: str
+    time_interval: int
+    presented_book: int
 
-def load_token(path :str|None = None) -> Config:
-    env = Env()
-    env.read_env(path)
-    return Config(tg_bot=Tgbot(token=env('BOT_TOKEN')))
+class Read_env():
+    def __init__(self):
+        self.env = Env()
+        self.env.read_env('.env')
+
+    def load_config(self):
+        self.token = self.env('BOT_TOKEN')
+        self.time_interval = int(self.env('time_interval'))
+        self.presented_book = int(self.env('presented_book'))
+
+
+read_env = Read_env()
+read_env.load_config()
+configuration = Config(token=read_env.token, time_interval=read_env.time_interval, presented_book=read_env.presented_book)
 
 ####################################################################################################
 #Функция считывает данные о пользователях из файла users.json

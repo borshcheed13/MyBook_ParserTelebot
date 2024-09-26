@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup as bs
 from fake_useragent import UserAgent
 
+from telebot.config_data.config import configuration
+
 # *******************************************************
 # Константы
 # *******************************************************
@@ -43,8 +45,7 @@ class LastBooksOfTheDay(LastTenBooks):
     def __init__(self):
         super().__init__()
         self.url = URL
-        #Чтобы проверить работу периодической рассылки, применить индекс -1. Для корректной работы бота применить индекс 0.
-        self.presented_book = super().last_ten_books()[0] #при запуске программы считываю название последней книги на сайте
+        self.presented_book = super().last_ten_books()[configuration.presented_book] #при запуске программы считываю название последней книги на сайте
         self.unknown_books = []  # создаю пустой список, который далее буду наполнять новыми книгами
         self.page = 0  # задаю значение страницы
 

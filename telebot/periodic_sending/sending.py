@@ -1,8 +1,9 @@
 import asyncio
 
 from parser.parser_my_book import last_books_of_the_day
-from telebot.config_data.config import reading_a_file
-from telebot.config_data.config import writing_a_file
+from telebot.config_data.config import reading_a_file, writing_a_file
+from telebot.config_data.config import configuration
+
 
 ####################################################################################################
 #Здесь будут все функции
@@ -18,8 +19,7 @@ def format_text(book):
 class Sending():
     '''Класс для периодической отправки оповещений о появлении новых книг'''
     def __init__(self):
-        # Чтобы проверить работу периодической рассылки установить небольшое время (в сек.). Для корректной работы бота применить интервал 1 сутки = 24*60*60.
-        self.time_interval = 24*60*60 #устанавливаем интервал периодической рассылки - 1 сутки
+        self.time_interval = configuration.time_interval #устанавливаем интервал периодической рассылки
 
     def add_bot(self, bot):
         self.bot = bot

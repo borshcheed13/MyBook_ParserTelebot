@@ -2,13 +2,12 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from telebot.config_data.config import load_token
+from telebot.config_data.config import configuration
 from telebot.handlers import new_users_handlers, old_users_handlers, help_handlers #для регистрации роутеров
 from telebot.periodic_sending.sending import instance_sending, coroutine_sending
 
 async def start_my_book_parsertelebot():
-    config = load_token('.env') #Создаем объект, хранящий в себе токен из виртуального окружения
-    bot = Bot(token=config.tg_bot.token) #Инициализируем бот
+    bot = Bot(token=configuration.token) #Инициализируем бот
     storage = MemoryStorage() #Инициализируем хранилище данных о пользователях
     dp = Dispatcher(storage=storage) #Инициализируем диспетчер
 
